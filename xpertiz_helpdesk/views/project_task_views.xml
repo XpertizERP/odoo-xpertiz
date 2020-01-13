@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="view_task_form2_inherit" model="ir.ui.view">
+			<field name="name">view.task.form2.inherit</field>
+			<field name="inherit_id" ref="project.view_task_form2"/>
+			<field name="model">project.task</field>
+			<field name="arch" type="xml">
+				<button name="toggle_active" position="before">
+	                <button class="oe_stat_button" type="object" name="action_open_helpdesk_ticket" context="{'default_task_id': active_id}" icon="fa-life-ring" attrs="{'invisible': [('ticket_count', '=', 0)]}">
+	                    <div class="o_stat_info">
+	                        <field name="ticket_count" class="o_stat_value"/>
+	                        <span class="o_stat_text"> Tickets</span>
+	                    </div>
+	                </button>
+	            </button>
+			</field>
+		</record>
+		
+		<record id="view_task_form2_inherited" model="ir.ui.view">
+			<field name="name">hr.timesheet.view.task.form2.inherited</field>
+			<field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+			<field name="model">project.task</field>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='timesheet_ids']/tree/field[@name='employee_id']" position="after">
+					<field name="helpdesk_ticket_id"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>
