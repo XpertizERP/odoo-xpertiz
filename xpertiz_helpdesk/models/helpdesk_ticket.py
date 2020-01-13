@@ -26,6 +26,7 @@ class HelpdeskTicket(models.Model):
         
 class TicketTask(models.TransientModel):
     _name = 'ticket.task'
+    _description = "Popup generation task from ticket"
     
     name = fields.Char(string='Name', size=32, required=True)
     partner_id = fields.Many2one('res.partner', string='Customer', required=False, ondelete='restrict')
